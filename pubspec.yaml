@@ -1,0 +1,17 @@
+name: libffi6_extension
+version: 0.0.1
+author: Andrew Mezoni <andrew.mezoni@gmail.com>
+description: Library for performing operations on foreign functions.
+homepage: https://github.com/mezoni/libffi6_extension
+dependencies:
+  barback: any
+  build_tools: any
+  ccompilers: any
+  path: any
+  system_info: any
+dev_dependencies:
+  unittest: any
+transformers:
+- libffi6_extension
+- $dart2js:
+    $exclude: '**'
