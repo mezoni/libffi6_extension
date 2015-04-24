@@ -1,4 +1,4 @@
-library libffi_extension.libffi_extension;
+library libffi6_extension.ffi6_extension;
 
 import 'dart-ext:ffi6_extension';
 
@@ -140,7 +140,7 @@ class LibffiExtension {
 
     return _ffiPrepClosureLoc(closure, cif, fn, userData, codeloc);
   }
-  
+
   static int registerClosure(Object closure, int handle) {
     if (closure == null) {
       throw new ArgumentError.notNull("closure");
@@ -157,11 +157,11 @@ class LibffiExtension {
     if (name == null) {
       throw new ArgumentError.notNull("name");
     }
-    
+
     if (addr == null) {
       throw new ArgumentError.notNull("addr");
     }
-    
+
     _resolveFunction(name, addr);
   }
 
@@ -184,6 +184,6 @@ class LibffiExtension {
   static int _getClosureHandler() native "Libffi_GetClosureHandler";
 
   static int _registerClosure(Object closure, int handle) native "Libffi_RegisterClosure";
-  
+
   static void _resolveFunction(String name, int addr) native "Libffi_ResolveFunction";
 }

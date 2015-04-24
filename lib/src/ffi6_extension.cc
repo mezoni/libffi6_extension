@@ -270,8 +270,10 @@ void Libffi_ResolveFunction(Dart_NativeArguments arguments) {
     DartError(buffer, "ArgumentError");
   } else {
     if (*fn != NULL) {
-      snprintf(buffer, sizeof(buffer) / sizeof(char), "Function '%s' already resolved", name);   
-      DartError(buffer, "ArgumentError");
+      if ((int64_t)*fn - addr != 0) {
+        snprintf(buffer, sizeof(buffer) / sizeof(char), "Function '%s' already resolved", name);   
+        DartError(buffer, "ArgumentError");
+      }
     } else {    
       *fn = (void*)addr;
     }

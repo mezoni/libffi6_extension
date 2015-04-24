@@ -1,5 +1,5 @@
 name: libffi6_extension
-version: 0.0.4
+version: 0.0.5
 author: Andrew Mezoni <andrew.mezoni@gmail.com>
 description: Library for performing operations on foreign functions.
 homepage: https://github.com/mezoni/libffi6_extension
