@@ -20,15 +20,13 @@ class Installer {
       throw new ArgumentError.notNull("arguments");
     }
 
-    await lock(Builder.lock, () async {
-      var cwd = FileUtils.getcwd();
-      try {
-        FileUtils.chdir("lib/src");
-        await _install(arguments);
-      } finally {
-        FileUtils.chdir(cwd);
-      }
-    });
+    var cwd = FileUtils.getcwd();
+    try {
+      FileUtils.chdir("lib/src");
+      await _install(arguments);
+    } finally {
+      FileUtils.chdir(cwd);
+    }
   }
 
   Future _install(List<String> args) async {
