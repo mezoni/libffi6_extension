@@ -3,7 +3,7 @@ libffi6_extension
 
 Library for performing operations on foreign functions.
 
-Version: 0.0.7
+Version: 0.0.8
 
 **Precompiled binaries**  
 
