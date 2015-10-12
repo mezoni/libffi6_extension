@@ -6,6 +6,7 @@ import "package:file_utils/file_utils.dart";
 
 const String CHANGE_LOG = "tool/change.log";
 const String CHANGELOG_MD = "CHANGELOG.md";
+const String LIBFFI6_EXTENSION_INF = "lib/src/libffi6_extension.inf";
 const String PUBSPEC_YAML = "pubspec.yaml";
 const String README_MD = "README.md";
 const String README_MD_IN = "tool/README.md.in";
@@ -16,6 +17,10 @@ void main(List<String> args) {
 
   file(CHANGELOG_MD, [CHANGE_LOG], (Target t, Map args) {
     writeChangelogMd();
+  });
+
+  file(LIBFFI6_EXTENSION_INF, [PUBSPEC_YAML], (Target t, Map args) {
+    new File(t.name).writeAsStringSync(getVersion());
   });
 
   file(README_MD_IN, [], (Target t, Map args) {
@@ -49,7 +54,7 @@ void main(List<String> args) {
     return exec("git", ["add", "--all"]);
   }, description: "git add --all");
 
-  target("git:commit", [CHANGELOG_MD, README_MD, "git:add"], (Target t, Map args) {
+  target("git:commit", [CHANGELOG_MD, README_MD, LIBFFI6_EXTENSION_INF, "git:add"], (Target t, Map args) {
     var message = args["m"];
     if (message == null || message.isEmpty) {
       print("Please, specify the `commit` message with --m option");
