@@ -9,8 +9,7 @@ dependencies:
   ccompilers: any
   path: any
   pub_cache: any
-  sandbox:
-    git: https://github.com/mezoni/sandbox.git
+  sandbox: any
   system_info: any
 dev_dependencies:
   unittest: any
